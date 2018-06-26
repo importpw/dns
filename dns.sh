@@ -21,13 +21,13 @@ dns_resolve() {
   local lookup
   local result
   local server
-  local rrtype="A"
   local hostname="$1"
+  shift
+  local rrtype="A"
   local has_dig="$(hash dig 2>/dev/null; echo $?)"
-  if [ $# -gt 1 ]; then
+  if [ $# -gt 0 ]; then
     rrtype="$1"
     shift
-    hostname="$1"
   fi
   if [ "${has_dig}" -ne 0 ] && [ "$rrtype" = "A" ]; then
     # IPv4
@@ -52,4 +52,44 @@ dns_resolve() {
   else
     echo "${result}"
   fi
+}
+
+dns_resolve_4() {
+  dns_resolve "$1" A
+}
+
+dns_resolve_6() {
+  dns_resolve "$1" AAAA
+}
+
+dns_resolve_cname() {
+  dns_resolve "$1" CNAME
+}
+
+dns_resolve_mx() {
+  dns_resolve "$1" MX
+}
+
+dns_resolve_naptr() {
+  dns_resolve "$1" NAPTR
+}
+
+dns_resolve_ns() {
+  dns_resolve "$1" NS
+}
+
+dns_resolve_ptr() {
+  dns_resolve "$1" PTR
+}
+
+dns_resolve_soa() {
+  dns_resolve "$1" SOA
+}
+
+dns_resolve_srv() {
+  dns_resolve "$1" SRV
+}
+
+dns_resolve_txt() {
+  dns_resolve "$1" TXT
 }

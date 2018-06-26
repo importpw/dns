@@ -21,4 +21,4 @@ assert_exit 0 dns_resolve www.google.com
 
 echo Resolving www.google.com
 dns_resolve www.google.com
-dns_resolve AAAA www.google.com
+dns_resolve www.google.com AAAA
