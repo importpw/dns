@@ -22,3 +22,7 @@ assert_exit 0 dns_resolve www.google.com
 echo Resolving www.google.com
 dns_resolve www.google.com
 dns_resolve www.google.com AAAA
+
+
+# dns_reverse
+assert_equal "$(dns_reverse 8.8.8.8)" google-public-dns-a.google.com

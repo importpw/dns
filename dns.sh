@@ -54,6 +54,10 @@ dns_resolve() {
   fi
 }
 
+dns_reverse() {
+  dig +noall +answer -x "$1" | awk '{print $(NF)}' | sed 's/\.$//'
+}
+
 dns_resolve_4() {
   dns_resolve "$1" A
 }
