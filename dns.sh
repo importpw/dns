@@ -1,3 +1,4 @@
+# https://unix.stackexchange.com/a/20793/102771
 dns_lookup() {
   local result
   if hash dscacheutil 2>/dev/null; then
