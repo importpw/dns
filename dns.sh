@@ -54,6 +54,7 @@ dns_resolve() {
   fi
 }
 
+# https://superuser.com/a/649561/41354
 dns_reverse() {
   dig +noall +answer -x "$1" | awk '{print $(NF)}' | sed 's/\.$//'
 }
