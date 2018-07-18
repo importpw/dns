@@ -1,6 +1,7 @@
 #!/bin/sh
+set -eu
 eval "`curl -sfLS import.pw`"
-import "import.pw/assert@2.1.1"
+import "import.pw/assert@2.1.2"
 source ./dns.sh
 
 
